@@ -67,10 +67,10 @@ def gather_iam_line(set='train',set_wid=False):
             name_parts = name.split('-')
             pathlist = [root_path] + ['-'.join(name_parts[:i+1]) for i in range(len(name_parts))]
             line_name = pathlist[-1]
-            #if (info[1] != 'ok') or (line_name not in data_set):  # if the line is not properly segmented
-            #    continue
-            if (line_name not in data_set):
-		continue
+            if (info[1] != 'ok') or (line_name not in data_set):  # if the line is not properly segmented, i.e., only "proper" sentences were used in this paper.
+                continue
+            #if (line_name not in data_set):
+	    #	continue
             if (set_wid == True):   
                 wid = img2id[line_name]
             else:
